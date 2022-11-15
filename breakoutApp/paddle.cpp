@@ -1,0 +1,22 @@
+#include "paddle.h"
+#include <QPainter>
+
+#define WIDTH 50
+#define HEIGHT 12
+
+Paddle::Paddle(QWidget *parent)
+    : QWidget(parent)
+{
+    resize(WIDTH, HEIGHT);
+//    setPixmap(QPixmap("paddle.png").scaled(WIDTH,HEIGHT));
+    setStyleSheet("background-color:rgba(0,0,0,0)");
+}
+
+void Paddle::paintEvent(QPaintEvent* e)
+{
+    Q_UNUSED(e);
+
+    QPainter p(this);
+    p.setBrush(QColor(Qt::darkMagenta));
+    p.drawRoundedRect(0,0,WIDTH, HEIGHT, 5, 5);
+}
